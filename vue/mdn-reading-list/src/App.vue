@@ -3,7 +3,7 @@
     <h1>My Todo List</h1>
     <ul>
       <li>
-        <to-do-item label="My ToDo Item" :checked="true" />
+        <to-do-item label="My ToDo Item" :done="true" />
       </li>
     </ul>
   </div>
