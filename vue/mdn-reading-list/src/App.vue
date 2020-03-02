@@ -1,17 +1,23 @@
 <template>
   <div id="app">
     <h1>My Todo List</h1>
+    <ul>
+      <li>
+        <to-do-item label="My ToDo Item" :checked="true" />
+      </li>
+    </ul>
   </div>
 </template>
 
-
 <script>
+import ToDoItem from './components/ToDoItem.vue';
 
 export default {
   name: 'app',
   components: {
+    ToDoItem
   }
-}
+};
 </script>
 
 <style>
