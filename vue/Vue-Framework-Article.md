@@ -365,11 +365,11 @@ export default {
 
 Now that we have a list of items, we can use the `v-for` directive to display them. Directives are applied to elements like other attributes. In case of `v-for`, you use a special syntax similar to a "for...in" loop in JavaScript. That syntax looks like this: `v-for="item in items"` where "items" is the array you want to iterate over, and "item" is a reference to the current element in the array.
 
-`v-for` attaches to the element you want to repeat, and renders that element and it's children. In this case, we want to repeat each <li> element for every to-do item inside our ToDoItems array. Then we want to pass the data from each to-do item to a ToDoItem component.
+`v-for` attaches to the element you want to repeat, and renders that element and it's children. In this case, we want to repeat each `<li>` element for every to-do item inside our ToDoItems array. Then we want to pass the data from each to-do item to a ToDoItem component.
 
 ### Key Attribute
 
-Before that, there's one other piece of syntax to know with v-for, the "key" attribute. To help Vue optimize rendering the elements in the list, Vue tries to patch list elements so it's not recreating them every time the list changes. However, Vue needs help. To make sure it is re-using list elements appropriately, it needs a unique "key" on the same element that you attach v-for onto. To make sure that Vue can accurately compare the "key" attributes, they need to be string or numeric values. While it would be great to use the name field, this field will eventually be controlled by user input, which means we can't guarantee that the names would be unique. We can use lodash.uniqueid, however.
+Before that, there's one other piece of syntax to know with v-for, the "key" attribute. To help Vue optimize rendering the elements in the list, Vue tries to patch list elements so it's not recreating them every time the list changes. However, Vue needs help. To make sure it is re-using list elements appropriately, it needs a unique "key" on the same element that you attach `v-for` onto. To make sure that Vue can accurately compare the "key" attributes, they need to be string or numeric values. While it would be great to use the name field, this field will eventually be controlled by user input, which means we can't guarantee that the names would be unique. We can use lodash.uniqueid, however.
 
 Import lodash.uniqueid like you did in your ToDoItem component: `import uniqueId from 'lodash.uniqueid'`. Then, add an id field to each element in your ToDoItems array, and assign it the value of `uniqueId('todo-')`.
 
@@ -405,7 +405,7 @@ Now, add the `v-for` directive and key attribute to the `<li>` elements in your 
     </ul>
 ```
 
-When you do so, every JS expression between the <li> tags will have access to the "item" value in addition to the other component attributes. This means we can pass the fields of item to our ToDoItem component, just remember to use the v-bind syntax. 
+When you do so, every JS expression between the `<li>` tags will have access to the "item" value in addition to the other component attributes. This means we can pass the fields of item to our ToDoItem component, just remember to use the v-bind syntax. 
 
 ```html
     <ul>
@@ -451,3 +451,5 @@ The template in your App.vue should look like this:
   </div>
 </template>
 ```
+
+## Building a Form
