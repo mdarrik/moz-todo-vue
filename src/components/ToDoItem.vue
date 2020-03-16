@@ -1,6 +1,6 @@
 <template>
   <div class="custom-checkbox">
-    <input type="checkbox" :id="id" :checked="isDone" class="checkbox" />
+    <input type="checkbox" :id="id" :checked="isDone" class="checkbox" @change="$emit('checkbox-changed')" />
     <label :for="id" class="checkbox-label">{{label}}</label>
   </div>
 </template>
@@ -15,6 +15,11 @@ export default {
     return {
       isDone: this.done
     };
+  },
+  methods: {
+    onChange() {
+      this.emit('checkbox-checked')
+    }
   }
 };
 </script> 
