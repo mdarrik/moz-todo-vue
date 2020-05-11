@@ -43,8 +43,8 @@ export default {
   },
   computed: {
     listSummary() {
-      const numberUnfinishedItems = this.ToDoItems.filter(item =>!item.done).length
-      return `${numberUnfinishedItems} ${numberUnfinishedItems === 1 ? 'Item' : 'Items'} Unfinished of ${this.ToDoItems.length} ${this.ToDoItems.length === 1 ? 'Item' : 'Items'}`
+      const numberFinishedItems = this.ToDoItems.filter(item =>item.done).length
+      return `${numberFinishedItems} ${numberFinishedItems === 1 ? 'Item' : 'Items'} completed out of ${this.ToDoItems.length} ${this.ToDoItems.length === 1 ? 'Item' : 'Items'}`
     }
   },
 };
