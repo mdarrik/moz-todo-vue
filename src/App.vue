@@ -5,7 +5,7 @@
     <h2 id="list-summary">{{listSummary}}</h2>
     <ul aria-labelledby="list-summary">
       <li v-for="item in ToDoItems" :key="item.id">
-        <to-do-item :label="item.name" :done="item.done" :id="item.id" @checkbox-changed="updateDoneStatus(item.id)" />
+        <to-do-item :label="item.name" :done="item.done" :id="item.id" @checkbox-changed="updateDoneStatus(item.id)"></to-do-item>
       </li>
     </ul>
   </div>
