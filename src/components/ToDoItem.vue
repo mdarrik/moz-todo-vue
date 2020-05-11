@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     onChange() {
-      this.emit('checkbox-checked')
+      this.$emit('checkbox-checked')
     }
   }
 };
