@@ -11,7 +11,7 @@
       <label :for="id" class="checkbox-label">{{label}}</label>
     </div>
     <div class="btn-group">
-      <button type="button" class="btn" @click="toggleToEditForm">
+      <button type="button" class="btn" ref="editButton" @click="toggleToItemEditForm">
         Edit
         <span class="visually-hidden">{{label}}</span>
       </button>
@@ -21,7 +21,13 @@
       </button>
     </div>
   </div>
-  <to-do-item-edit-form v-else :id="id" :name="label" @item-edited="itemEdited" @edit-cancelled="editCancelled"></to-do-item-edit-form>
+  <to-do-item-edit-form
+    v-else
+    :id="id"
+    :name="label"
+    @item-edited="itemEdited"
+    @edit-cancelled="editCancelled"
+  ></to-do-item-edit-form>
 </template>
 <script>
 import ToDoItemEditForm from "./ToDoItemEditForm";
@@ -44,15 +50,24 @@ export default {
     deleteToDo() {
       this.$emit("item-deleted");
     },
-    toggleToEditForm() {
+    toggleToItemEditForm() {
+      console.log(this.$refs.editButton);
       this.isEditing = true;
     },
     itemEdited(newItemName) {
       this.$emit("item-edited", newItemName);
       this.isEditing = false;
+      this.focusOnEditButton();
     },
     editCancelled() {
       this.isEditing = false;
+      this.focusOnEditButton();
+    },
+    focusOnEditButton() {
+      this.$nextTick(() => {
+        const editButtonRef = this.$refs.editButton;
+        editButtonRef.focus();
+      });
     }
   }
 };

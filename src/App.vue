@@ -2,7 +2,7 @@
   <div id="app">
     <h1>My To-Do List</h1>
     <to-do-form @todo-added="addToDo" />
-    <h2 id="list-summary">{{listSummary}}</h2>
+    <h2 id="list-summary" ref="listSummary" tabindex="-1">{{listSummary}}</h2>
     <ul aria-labelledby="list-summary" class="stack-large">
       <li v-for="item in ToDoItems" :key="item.id">
         <to-do-item
@@ -58,6 +58,7 @@ export default {
     deleteToDo(toDoId) {
       const itemIndex = this.ToDoItems.findIndex(item => item.id === toDoId);
       this.ToDoItems.splice(itemIndex, 1);
+      this.$refs.listSummary.focus();
     },
     editToDo(toDoId, newItemName) {
       const toDoToEdit = this.ToDoItems.find(item => item.id === toDoId);
@@ -68,9 +69,7 @@ export default {
     listSummary() {
       const numberFinishedItems = this.ToDoItems.filter(item => item.done)
         .length;
-      return `${numberFinishedItems} out of ${this.ToDoItems.length} ${
-        this.ToDoItems.length === 1 ? "item" : "items"
-      } completed`;
+      return `${numberFinishedItems} out of ${this.ToDoItems.length} items completed`;
     }
   }
 };
